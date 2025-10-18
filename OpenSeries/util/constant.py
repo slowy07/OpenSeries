@@ -19,6 +19,7 @@
 # SOFTWARE.
 
 from colorama import Fore, Style
+from typing import Final
 
 # nilai constant untuk bellshade
 VERSI_LIBRARY = "1.9.2"
@@ -31,7 +32,7 @@ ISSUE_WEBSITE = "https://github.com/bellshade/OpenSeries/issues"
 
 # bilangan pi adalah nilai konstant dalam matematika yang merupakan perbandingan keliling
 # lingkaran dengan diameternya
-PI: float = 3.14159265358979323846
+PI: Final[float] = 3.14159265358979323846
 
 # bilangan euler adalah nilai konstant yang dimana nilai kira-kiranya sama dengan 2.71828
 # dan dikarakterisasi dalam berbagai cara

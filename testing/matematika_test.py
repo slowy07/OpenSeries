@@ -43,6 +43,231 @@ class TestKelilingLingkaran(unittest.TestCase):
             raise hasil
 
 
+class TestLuasPersegi(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.luas_persegi(2.5)
+        self.assertEqual(hasil, 6.25)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.luas_persegi(5)
+        self.assertEqual(hasil, 25)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.luas_persegi("5")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestLuasPersegiPanjang(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.luas_persegi_panjang(5.6, 3)
+        self.assertEqual(hasil, 16.799999999999997)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.luas_persegi_panjang(5, 3)
+        self.assertEqual(hasil, 15)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.luas_persegi_panjang("6", "9")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestKelilingPersegiPanjang(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.keliling_persegi_panjang(4.3, 5)
+        self.assertEqual(hasil, 18.6)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.keliling_persegi_panjang(5, 3)
+        self.assertEqual(hasil, 16)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.keliling_persegi_panjang("8", "10")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestLuasELips(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.luas_elips(2.3, 7)
+        self.assertEqual(hasil, 50.579641722795664)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.luas_elips(10, 4)
+        self.assertEqual(hasil, 125.66370614359172)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.luas_elips("7", "14")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestLuasTrapesium(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.luas_trapesium(2.6, 4.2, 2.1)
+        self.assertEqual(hasil, 7.1400000000000015)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.luas_trapesium(6, 2, 3)
+        self.assertEqual(hasil, 12)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.luas_trapesium("7", "3", "8")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestKelilingSegitiga(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.keliling_segitiga(4.1, 5.3, 2.8)
+        self.assertEqual(hasil, 12.2)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.keliling_segitiga(5, 2, 3)
+        self.assertEqual(hasil, 10)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.keliling_segitiga("10", "7.1", "2.8")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestLuasJajargenjang(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.luas_jajargenjang(3.1, 5)
+        self.assertEqual(hasil, 15.5)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.luas_jajargenjang(2, 7)
+        self.assertEqual(hasil, 14)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.luas_jajargenjang(4, "9")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestKelilingJajargenjang(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.keliling_jajargenjang(4.5, 2.1)
+        self.assertEqual(hasil, 13.2)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.keliling_jajargenjang(9, 3)
+        self.assertEqual(hasil, 24)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.keliling_jajargenjang("4.3", "10")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestVolumeKubus(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.volume_kubus(4.5)
+        self.assertEqual(hasil, 91.125)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.volume_kubus(9)
+        self.assertEqual(hasil, 729)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.volume_kubus("10")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestVolumeBalok(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.volume_balok(4.3, 5.2, 1.2)
+        self.assertEqual(hasil, 26.831999999999997)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.volume_balok(5, 4, 3)
+        self.assertEqual(hasil, 60)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.volume_balok(7.2, "2", 12)
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestVolumeSilinder(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.volume_silinder(1.2, 4.3)
+        self.assertEqual(hasil, 19.452741711028)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.volume_silinder(10, 2)
+        self.assertEqual(hasil, 628.3185307179587)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.volume_silinder(7.8, "2")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestVolumeElipsoid(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.volume_elipsoid(4.5, 3.2, 2.1)
+        self.assertEqual(hasil, 126.66901579274047)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.volume_elipsoid(10, 5, 3)
+        self.assertEqual(hasil, 628.3185307179585)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.volume_elipsoid(7.2, "2", "2.5")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestVolumeKerucut(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.volume_kerucut(10, 12)
+        self.assertEqual(hasil, 1256.637061435917)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.volume_kerucut(1.1, 2.5)
+        self.assertEqual(hasil, 3.167772592369708)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.volume_kerucut(3, "9")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestVolumeBola(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.volume_bola(3.2)
+        self.assertEqual(hasil, 137.25827743044047)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.volume_bola(4)
+        self.assertEqual(hasil, 268.082573106329)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.volume_bola("4.1")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestPermukaanBola(unittest.TestCase):
+    def test_tipe_data_float(self):
+        hasil = matematika.permukaan_bola(2.3)
+        self.assertEqual(hasil, 66.47610054996001)
+
+    def test_tipe_data_int(self):
+        hasil = matematika.permukaan_bola(8)
+        self.assertEqual(hasil, 804.247719318987)
+
+    def test_nilai_input_tidak_valid(self):
+        hasil = matematika.permukaan_bola("6.3")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
 class TestDiameterLingkaran(unittest.TestCase):
     def test_tipe_data_float(self):
         hasil = matematika.diameter_lingkaran(2.5)

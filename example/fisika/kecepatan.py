@@ -1,5 +1,7 @@
-import OpenSeries.fisika as fisika
+from OpenSeries import fisika
 
-print("hitung kecepatan")
-result_kecepatan = fisika.kecepatan(4, 2.3)
-print(f"hasil dari kecepatan adalah: {result_kecepatan}\n")
+if __name__ == "__main__":
+    hasil = fisika.kecepatan(12, 3)
+    hasil_list = fisika.kecepatan([10, 20, 30], [5, 6, 7])
+    print(hasil)
+    print(hasil_list)
