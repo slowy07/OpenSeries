@@ -30,6 +30,7 @@ classifiers = [
 [tool.setuptools.packages.find]
 include = ["OpenSeries*"]
 exclude = ["example"]
+where = ["."]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}

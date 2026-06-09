@@ -1,8 +1,9 @@
-import OpenSeries.util.error as error
 from typing import Union
+from .util.error import ErrorTipeData, Error
+import numpy as np
 
 
-def angka_armstrong(angka: int) -> Union[str, error.ErrorTipeData]:
+def angka_armstrong(angka: int) -> Union[str, ErrorTipeData]:
     """
     angka armstrong adalah bilangan bulat positif yang sama dengan jumlah
     pangkat tiga dari digit-digitnya
@@ -17,24 +18,16 @@ def angka_armstrong(angka: int) -> Union[str, error.ErrorTipeData]:
     benar, bukan = "angka armstrong", "bukan angka armstrong"
     # cek tipe data dari variable angka
     if isinstance(angka, (float, str)):
-        return error.ErrorTipeData(["int"])
-    else:
-        total = 0
-        number_of_digit = 0
-        temp = angka
+        return ErrorTipeData(["int"])
+    angka_str = str(abs(angka))
+    jumlah_digit = len(angka_str)
 
-        number_of_digit = len(str(angka))
-        temp = angka
-        while temp > 0:
-            rem = temp % 10
-            total += rem**number_of_digit
-            temp //= 10
-        if angka == total:
-            return benar.capitalize()
-        return bukan.capitalize()
+    digit_array = np.fromiter((int(digit) for digit in angka_str), dtype=int)
+    total = np.sum(np.power(digit_array, jumlah_digit))
+    return benar if abs(angka) == total else bukan
 
 
-def angka_automorphic(angka: int) -> Union[str, error.ErrorTipeData]:
+def angka_automorphic(angka: int) -> Union[str, ErrorTipeData]:
     """
     angka automorphic adalah bilangan asli dalam basis bilangan tertentu yang kuadratnya
     berakhir dengan angka yang sama dengan bilangan itu sendiri
@@ -54,20 +47,20 @@ def angka_automorphic(angka: int) -> Union[str, error.ErrorTipeData]:
     benar, bukan = "angka automorphic", "bukan angka automorphic"
     # cek dari tipe data angka
     if not isinstance(angka, int):
-        return error.ErrorTipeData(["int"])
+        return ErrorTipeData(["int"])
     if angka < 0:
         return bukan.capitalize()
 
     kuadrat_angka = angka * angka
-    while angka < 0:
-        if angka % 10 != kuadrat_angka % 10:
-            return bukan.capitalize()
-        angka //= 10
-        kuadrat_angka //= 10
-    return benar.capitalize()
+    angka_str = str(angka)
+    kuadrat_str = str(kuadrat_angka)
+    if kuadrat_str.endswith(angka_str):
+        return benar.capitalize()
+    else:
+        return bukan.capitalize()
 
 
-def angka_pronic(angka: int) -> Union[str, error.ErrorTipeData]:
+def angka_pronic(angka: int) -> Union[str, ErrorTipeData]:
     """
     angka pronic adalah bilangan bulat positif yang merupakan hasil perkalian
     dari dua bilangan bulat berurutan
@@ -85,7 +78,7 @@ def angka_pronic(angka: int) -> Union[str, error.ErrorTipeData]:
     benar, bukan = "angka pronic", "bukan angka pronic"
     # cek dari tipe data angka
     if not isinstance(angka, int):
-        return error.ErrorTipeData(["int"])
+        return ErrorTipeData(["int"])
     if angka < 0 or angka % 2 == 1:
         return bukan.capitalize()
     angka_pangkat = int(angka**0.5)
@@ -96,7 +89,7 @@ def angka_pronic(angka: int) -> Union[str, error.ErrorTipeData]:
     )
 
 
-def angka_segitiga(angka: int) -> Union[int, error.ErrorTipeData, error.Error]:
+def angka_segitiga(angka: int) -> Union[int, ErrorTipeData, Error]:
     """
     bilangan segitiga adalah bilangan yang dapat disusun dalam bentuk segitiga sama sisi
 
@@ -110,8 +103,8 @@ def angka_segitiga(angka: int) -> Union[int, error.ErrorTipeData, error.Error]:
     """
     # jika tipe data dari angka tidak integer
     if not isinstance(angka, int):
-        return error.ErrorTipeData(["int"])
+        return ErrorTipeData(["int"])
     # jika value dari angka diisi nilai negatif
     if angka < 0:
-        return error.Error("angka tidak boleh negatif")
+        return Error("angka tidak boleh negatif")
     return angka * (angka + 1) // 2

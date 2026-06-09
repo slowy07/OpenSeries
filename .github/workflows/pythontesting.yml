@@ -37,4 +37,4 @@ jobs:
       # testing kode dengan pytest
       - name: testing kode dengan pytest
         run: |
-          pytest testing/main_test.py --verbose
+          pytest -v
