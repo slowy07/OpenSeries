@@ -22,7 +22,14 @@ from setuptools import setup, find_packages
 from os import path
 import io
 import platform
-import OpenSeries.util.constant as constant
+
+# --- constants (inlined to avoid import at build time) ---
+VERSI_LIBRARY = "1.9.2"
+OPENSERIES_BELLSHADE_LISENSI = "MIT"
+NAMA_PROJECT = "OpenSeries"
+DESCRIPTION = "Library untuk membantu siswa SMA / SMK / Sederajat"
+AUTHOR = ["bellshade", "wpu", "warga slowy"]
+WEBSITE = "https://github.com/bellshade/OpenSeries"
 
 # membuka file README
 with open("README.md") as file_readme:
@@ -35,23 +42,22 @@ with io.open(path.join(info, "requirements.txt"), encoding="utf-8") as file:
     if platform.system == "windows":
         core_require.append("pywin32")
 
-
-install_require = [x.strip() for x in core_require if "git+" not in x]
+install_require = [x.strip() for x in core_require if "git+" not in x and x.strip()]
 
 # setup nama project
 setup(
     # nama dari project
-    name=f"{constant.NAMA_PROJECT}",
+    name=f"{NAMA_PROJECT}",
     # versi dari project
-    version=f"{constant.VERSI_LIBRARY}",
+    version=f"{VERSI_LIBRARY}",
     # deskripsi singkat dari project
-    description=f"{constant.DESCRIPTION}",
+    description=f"{DESCRIPTION}",
     # deskripsi detail tentang project
     long_description=str(readme),
     # url atau sumber dari projek
-    url=f"{constant.WEBSITE}",
+    url=f"{WEBSITE}",
     # maintainer, developer yang membuat dari project
-    author=", ".join(constant.AUTHOR),
+    author=", ".join(AUTHOR),
     packages=find_packages(),
     # jika ada folder tambahan dari project ditambahkan dalam dictionary
     package_data={"OpenSeries": ["util/*"]},
@@ -60,7 +66,7 @@ setup(
     # mengklasifikasi project dari OpenSeries
     classifiers=[
         "Intended Audience :: Developers",
-        f"License :: OSI Approved :: {constant.OPENSERIES_BELLSHADE_LISENSI} License",
+        f"License :: OSI Approved :: {OPENSERIES_BELLSHADE_LISENSI} License",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
@@ -69,9 +75,9 @@ setup(
     # fungsi untuk menginstall package tambahan dari requirements
     install_requires=install_require,
     # lisensi dari project
-    license=f"{constant.OPENSERIES_BELLSHADE_LISENSI} License",
+    license=f"{OPENSERIES_BELLSHADE_LISENSI} License",
     project_urls={
-        "Bug Reports": f"{constant.OPENSERIES_BELLSHADE_LISENSI}",
-        "Source": f"{constant.WEBSITE}",
+        "Bug Reports": f"{WEBSITE}/issues",
+        "Source": f"{WEBSITE}",
     },
 )

@@ -18,7 +18,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from colorama import Fore, Style
+try:
+    from colorama import Fore, Style
+except ImportError:
+    # Fallback for build environments where colorama isn't installed yet
+    class _DummyColor:
+        RED = ""
+        RESET_ALL = ""
+
+    Fore = _DummyColor()
+    Style = _DummyColor()
+
 from typing import Final
 
 # nilai constant untuk bellshade
