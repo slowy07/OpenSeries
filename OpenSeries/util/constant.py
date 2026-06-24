@@ -25,6 +25,7 @@ except ImportError:
     class _DummyColor:
         RED = ""
         RESET_ALL = ""
+
     Fore = _DummyColor()
     Style = _DummyColor()
 
